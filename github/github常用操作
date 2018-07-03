@@ -14,7 +14,7 @@
 可以轻松让你的 master 分支与原始版本库的 master 保持同步，
 并在准备好时将 master 中的更改合并到分支中。
 
-## Pull Request正常流程
+## Github Pull Request正确流程
 1. Add the original repository as a remote in your clone
 2. Pull the master branch from the original repository
 3. Merge the master branch into your change branch_name
