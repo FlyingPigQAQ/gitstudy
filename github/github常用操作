@@ -5,3 +5,45 @@
 你要做的不是简单地拉取和推送，而是要将更改拉入本地 master 分支中，
 将本地 master 合并到你的分支（在我们的例子中是 different-oil）中，
 然后将你的分支推送到远程版本库，最后将你的分支合并到本地或 GitHub 上的 master 中。
+### 将版本库Fork和克隆你的Fork
+现在，你已了解如何将版本库Fork、推送对你的Fork所做的更改和创建拉取请求，
+现在你将准备协同编写在本节课开始时提到的“创造你的历险记”故事。
+要这样做，首先应将此版本库Fork。然后，克隆你的Fork，并创建一个分支以在其中进行更改。
+> 注意：可以直接更改你的Fork中的 master 分支，但是，在协同构建公共版本库时，
+标准的做法是在Fork内的非 master 分支中进行更改。这样一来，
+可以轻松让你的 master 分支与原始版本库的 master 保持同步，
+并在准备好时将 master 中的更改合并到分支中。
+
+## Pull Request正常流程
+1. Add the original repository as a remote in your clone
+2. Pull the master branch from the original repository
+3. Merge the master branch into your change branch_name
+4. Push your change branch to your Fork
+
+```shell
+
+original repository -> Fork
+git clone Fork
+
+
+#########=======original repository 在修改并执行PR时间段未发生commit操作
+git checkout -b new_branch
+>>>>>修改代码
+git add;git commit;git push origin new_branch
+Fork -> New Pull Request
+
+
+#########=======original repository 在修改代码时间段发生了commit操作
+git checkout  -b new_branch
+>>>>>修改代码
+-----因为original repository 发生提交事件，本地要提交的代码与远程发生冲突
+git checkout master
+git remote add upstream original_repository_url
+git pull upstream master
+git checkout new_branch
+#将主分支合并到修改分支上
+git merge master
+》》》》解决冲突
+git add;git commit;git push origin new_branch;
+Fork -> New Pull Request
+```
