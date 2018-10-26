@@ -1,4 +1,4 @@
-### jstat详解
+## jstat详解
 ```
 jstat -<option> [-t] [-h<lines>] <vmid> [<interval> [<count>]]
 ```
@@ -32,6 +32,6 @@ lines为正整数，代表每lines个输出就显示一次列标题
 一共打印多少次
 > Examples  
 >>jstat -gc 5988 2000 100
-### 相关参考文档
+## 相关参考文档
 [Hotspot8](https://docs.oracle.com/javase/8/docs/technotes/tools/)  
 [Hotspot7](https://docs.oracle.com/javase/7/docs/technotes/tools/)

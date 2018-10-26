@@ -57,6 +57,34 @@ git 使用命令行分页器 less 浏览所有信息。以下是 less 的重要�
  - 两个完全不同的分支被合并
  - 创建一个合并 commit  
 
+#### 合并指定文件
+```shell
+git checkout -p another_branch_name file...
+```
+>Example:  
+git branch  
+*master  
+git checkout -p feature pom.xml   
+
+
+> -p指令  
+y - stage this hunk  
+n - do not stage this hunk  
+q - quit; do not stage this hunk nor any of the remaining ones  
+a - stage this hunk and all later hunks in the file  
+d - do not stage this hunk nor any of the later hunks in the file  
+g - select a hunk to go to  
+/ - search for a hunk matching the given regex  
+j - leave this hunk undecided, see next undecided hunk  
+J - leave this hunk undecided, see next hunk  
+k - leave this hunk undecided, see previous undecided hunk  
+K - leave this hunk undecided, see previous hunk  
+s - split the current hunk into smaller hunks  
+e - manually edit the current hunk  
+? - print help  
+** 其中指令e,如果要不删除行，将'-'替换为' ',如果要不新增行，将'+'所在行删除即可,**
+
+
 ## git commit
  --amend (添加文件到最近的commit,而不需要重新生成commit)
 ## git revert old_commit_id
@@ -64,11 +92,29 @@ git 使用命令行分页器 less 浏览所有信息。以下是 less 的重要�
 - 创建一个新的 commit 来记录这一更改   
 
 ## git reset
-## git reflog
---mixed(默认)  版本库->工作区  
+--mixed(默认)  版本库&暂存区->工作区  
 --soft     版本库->暂存区  
 --hard  版本库->垃圾回收区  
 git reset HEAD~1 父节点
 git reset HEAD~2 祖父节点...以此类推
 >**执行reset之前，最好创建备份分支**   
 git branch backup
+## git reflog
+## git stash
+>缓存暂存区文件  
+
+git stash pop 弹出暂存区文件  
+#### 常用场景
+```shell
+git stash
+git Pull
+git stash pop
+```
+## git checkout
+#### 单个文件回退到指定版本
+```shell
+git checkout commit_id file...
+
+```
+>Example:
+git checkout HEAD~1 app-services/pom.xml
